@@ -20,6 +20,13 @@ public class Address {
     public final String value;
     private boolean isPrivate;
 
+    public Address(Block block, Street street, Unit unit, PostalCode postalCode) {
+        this.block = block;
+        this.street = street;
+        this.unit = unit;
+        this.postalCode = postalCode;
+    }
+
     /**
      * Validates given address.
      *
@@ -57,6 +64,22 @@ public class Address {
     public int hashCode() {
         return value.hashCode();
     }
+
+    // Get Methods
+
+    @Override
+    public Block getBlock() {
+        return block;
+    }
+
+    @Override
+    public Street getStreet() { return street; }
+
+    @Override
+    public Unit getUnit() { return unit; }
+
+    @Override
+    public PostalCode postalCode() { return postalCode; }
 
     public boolean isPrivate() {
         return isPrivate;
