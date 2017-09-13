@@ -79,8 +79,8 @@ public interface ReadOnlyPerson {
         for (Tag tag : getTags()) {
             builder.append(tag);
         }
-        builder.append(getTags())
-                .append(" Affiliations: ");
+        builder
+                .append(" Affiliations:");
         for(Affiliation affiliation : getAffiliations()) {
             builder.append(affiliation);
         }
@@ -106,8 +106,7 @@ public interface ReadOnlyPerson {
         for (Tag tag : getTags()) {
             builder.append(tag);
         }
-        builder.append(getTags())
-                .append(" Affiliations: ");
+        builder.append(" Affiliations:");
         for(Affiliation affiliation : getAffiliations()) {
             builder.append(affiliation);
         }
