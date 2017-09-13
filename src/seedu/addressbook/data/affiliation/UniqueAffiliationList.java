@@ -26,7 +26,7 @@ public class UniqueAffiliationList implements Iterable<Affiliation>{
      */
     public static class DuplicateAffiliationException extends DuplicateDataException {
         protected DuplicateAffiliationException() {
-            super("Operation would result in duplicates.");
+            super("Operation would result in duplicate affiliations.");
         }
     }
 
