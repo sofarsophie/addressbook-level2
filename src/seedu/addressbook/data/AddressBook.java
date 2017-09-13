@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import seedu.addressbook.data.affiliation.UniqueAffiliationList;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList;
@@ -24,6 +25,7 @@ public class AddressBook {
 
     private final UniquePersonList allPersons;
     private final UniqueTagList allTags; // can contain tags not attached to any person
+    private final UniqueAffiliationList allAffiliations;
 
     /**
      * Creates an empty address book.
@@ -31,6 +33,7 @@ public class AddressBook {
     public AddressBook() {
         allPersons = new UniquePersonList();
         allTags = new UniqueTagList();
+        allAffiliations = new UniqueAffiliationList();
     }
 
     /**
@@ -40,9 +43,10 @@ public class AddressBook {
      * @param persons external changes to this will not affect this address book
      * @param tags external changes to this will not affect this address book
      */
-    public AddressBook(UniquePersonList persons, UniqueTagList tags) {
+    public AddressBook(UniquePersonList persons, UniqueTagList tags, UniqueAffiliationList affiliations) {
         this.allPersons = new UniquePersonList(persons);
         this.allTags = new UniqueTagList(tags);
+        this.allAffiliations = new UniqueAffiliationList(affiliations);
         for (Person p : allPersons) {
             syncTagsWithMasterList(p);
         }
@@ -119,6 +123,13 @@ public class AddressBook {
      */
     public UniqueTagList getAllTags() {
         return new UniqueTagList(allTags);
+    }
+
+    /**
+     * Returns a new UniqueAffiliationList of all tags in the address book at the time of the call.
+     */
+    public UniqueAffiliationList getAllAffiliations() {
+        return new UniqueAffiliationList(allAffiliations);
     }
 
     @Override
