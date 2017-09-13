@@ -50,8 +50,8 @@ public class AddCommand extends Command {
         for (String tagName : tags) {
             tagSet.add(new Tag(tagName));
         }
-        for (String affilName : affiliations) {
-            affiliationSet.add(new Affiliation(affilName));
+        for (String affiliationName : affiliations) {
+            affiliationSet.add(new Affiliation(affiliationName));
         }
         this.toAdd = new Person(
                 new Name(name),
