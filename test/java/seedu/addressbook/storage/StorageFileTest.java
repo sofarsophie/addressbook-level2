@@ -123,7 +123,7 @@ public class StorageFileTest {
                                 new Email("betsycrowe@gmail.com", false),
                                 new Address("Newgate Prison", true),
                                 new UniqueTagList(new Tag("friend"), new Tag("criminal")),
-                                new UniqueAffiliationList(new Affiliation("National Cat Uni"))));
+                                new UniqueAffiliationList(Collections.emptySet())));
         return ab;
     }
 }

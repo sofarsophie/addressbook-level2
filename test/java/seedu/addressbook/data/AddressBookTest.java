@@ -86,7 +86,8 @@ public class AddressBookTest {
 
         emptyAddressBook = new AddressBook();
         defaultAddressBook = new AddressBook(new UniquePersonList(aliceBetsy, bobChaplin),
-                                             new UniqueTagList(tagMathematician, tagScientist));
+                                             new UniqueTagList(tagMathematician, tagScientist),
+                                             new UniqueAffiliationList(affiliationGoogle, affiliationCMU));
     }
 
     @Rule
