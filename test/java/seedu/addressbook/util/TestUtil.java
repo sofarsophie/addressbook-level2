@@ -28,6 +28,8 @@ import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 import seedu.addressbook.data.tag.Tag;
 import seedu.addressbook.data.tag.UniqueTagList;
+import seedu.addressbook.data.affiliation.Affiliation;
+import seedu.addressbook.data.affiliation.UniqueAffiliationList;
 
 public class TestUtil {
     /**
@@ -65,7 +67,7 @@ public class TestUtil {
      * of Persons and Tags. The Persons and Tags are not cloned.
      */
     public static AddressBook clone(AddressBook addressBook) {
-        return new AddressBook(addressBook.getAllPersons(), addressBook.getAllTags());
+        return new AddressBook(addressBook.getAllPersons(), addressBook.getAllTags(), addressBook.getAllAffiliations());
     }
 
     /**
