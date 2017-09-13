@@ -3,6 +3,8 @@ package seedu.addressbook.commands;
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.addressbook.data.affiliation.Affiliation;
+import seedu.addressbook.data.affiliation.UniqueAffiliationList;
 import seedu.addressbook.data.exception.IllegalValueException;
 import seedu.addressbook.data.person.Address;
 import seedu.addressbook.data.person.Email;
@@ -41,17 +43,23 @@ public class AddCommand extends Command {
                       String phone, boolean isPhonePrivate,
                       String email, boolean isEmailPrivate,
                       String address, boolean isAddressPrivate,
-                      Set<String> tags) throws IllegalValueException {
+                      Set<String> tags,
+                      Set<String> affiliations) throws IllegalValueException {
         final Set<Tag> tagSet = new HashSet<>();
+        final Set<Affiliation> affiliationSet = new HashSet<>();
         for (String tagName : tags) {
             tagSet.add(new Tag(tagName));
+        }
+        for (String affilName : affiliations) {
+            affiliationSet.add(new Affiliation(affilName));
         }
         this.toAdd = new Person(
                 new Name(name),
                 new Phone(phone, isPhonePrivate),
                 new Email(email, isEmailPrivate),
                 new Address(address, isAddressPrivate),
-                new UniqueTagList(tagSet)
+                new UniqueTagList(tagSet),
+                new UniqueAffiliationList(affiliationSet)
         );
     }
 
