@@ -37,4 +37,32 @@ public class UniqueAffiliationList implements Iterable<Affiliation>{
      */
     public UniqueAffiliationList() {}
 
+    /**
+     * Constructs a affiliations list with the given affiliations.
+     */
+    public UniqueAffiliationList(Affiliation... affiliations) throws DuplicateAffiliationException {
+        final List<Affiliation> initialAffiliations = Arrays.asList(affiliations);
+        if (!Utils.elementsAreUnique(initialAffiliations)) {
+            throw new DuplicateAffiliationException();
+        }
+        internalList.addAll(initialAffiliations);
+    }
+
+    /**
+     * Constructs a affiliations list with the given affiliations.
+     */
+    public UniqueAffiliationList(Collection<Affiliation> affiliations) throws DuplicateAffiliationException {
+        if (!Utils.elementsAreUnique(affiliations)) {
+            throw new DuplicateAffiliationException();
+        }
+        internalList.addAll(affiliations);
+    }
+
+    /**
+     * Constructs a affiliations list with the given affiliations.
+     */
+    public UniqueAffiliationList(Set<Affiliation> affiliations) {
+        internalList.addAll(affiliations);
+    }
+
 }
