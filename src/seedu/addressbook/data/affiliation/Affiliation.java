@@ -8,7 +8,7 @@ import seedu.addressbook.data.exception.IllegalValueException;
  */
 public class Affiliation {
     public static final String MESSAGE_AFFIL_CONSTRAINTS = "Affiliation should be alphanumeric.";
-    public static final String AFFIL_VALIDATION_REGEX = "\\p{Alnum}+";
+    public static final String AFFIL_VALIDATION_REGEX = "^[a-zA-Z0-9\\-\\s]+$";
 
     public final String affilName;
 
