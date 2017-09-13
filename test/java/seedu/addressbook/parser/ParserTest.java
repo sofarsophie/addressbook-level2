@@ -279,7 +279,7 @@ public class ParserTest {
                 new Email(Email.EXAMPLE, false),
                 new Address(Address.EXAMPLE, true),
                 new UniqueTagList(new Tag("tag1"), new Tag("tag2"), new Tag("tag3")),
-                new UniqueAffiliationList(new Affiliation("institution1"), new Affiliation("institution2"))
+                new UniqueAffiliationList()
             );
         } catch (IllegalValueException ive) {
             throw new RuntimeException("test person data should be valid by definition");
