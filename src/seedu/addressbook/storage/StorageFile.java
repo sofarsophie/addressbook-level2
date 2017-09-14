@@ -17,7 +17,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
-import java.nio.ReadOnlyBufferException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -146,8 +145,6 @@ public class StorageFile {
             throw new StorageOperationException("Error parsing file data format");
         } catch (IllegalValueException ive) {
             throw new StorageOperationException("File contains illegal data values; data type constraints not met");
-        } catch (ReadOnlyBufferException roe) {
-            throw new StorageOperationException("File is read-only");
         }
     }
 
