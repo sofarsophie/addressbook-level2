@@ -172,7 +172,7 @@ public class Parser {
             return Collections.emptySet();
         }
         // replace first delimiter prefix, then split
-        final Collection<String> affiliationStrings = Arrays.asList(affiliationArguments.replaceFirst(" f/", "").split(" t/"));
+        final Collection<String> affiliationStrings = Arrays.asList(affiliationArguments.replaceFirst(" f/", "").split(" f/"));
         return new HashSet<>(affiliationStrings);
     }
 

@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import seedu.addressbook.data.affiliation.Affiliation;
 import seedu.addressbook.data.affiliation.UniqueAffiliationList;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.ReadOnlyPerson;
@@ -76,6 +77,29 @@ public class AddressBook {
     }
 
     /**
+     * Ensures that every affiliation in this person:
+     *  - exists in the master list {@link #allAffiliations}
+     *  - points to an Affiliation object in the master list
+     */
+    private void syncAffiliationsWithMasterList(Person person) {
+        final UniqueAffiliationList affiliationTags = person.getAffiliations();
+        allAffiliations.mergeFrom(affiliationTags);
+
+        // Create map with values = tag object references in the master list
+        final Map<Affiliation, Affiliation> masterAffiliationObjects = new HashMap<>();
+        for (Affiliation affiliation : allAffiliations) {
+            masterAffiliationObjects.put(affiliation, affiliation);
+        }
+
+        // Rebuild the list of person tags using references from the master list
+        final Set<Affiliation> commonAffiliationRef = new HashSet<>();
+        for (Affiliation affiliation : affiliationTags) {
+            commonAffiliationRef.add(masterAffiliationObjects.get(affiliation));
+        }
+        person.setAffiliations(new UniqueAffiliationList(commonAffiliationRef));
+    }
+
+    /**
      * Adds a person to the address book.
      * Also checks the new person's tags and updates {@link #allTags} with any new tags found,
      * and updates the Tag objects in the person to point to those in {@link #allTags}.
@@ -85,6 +109,7 @@ public class AddressBook {
     public void addPerson(Person toAdd) throws DuplicatePersonException {
         allPersons.add(toAdd);
         syncTagsWithMasterList(toAdd);
+        syncAffiliationsWithMasterList(toAdd);
     }
 
     /**
@@ -109,6 +134,7 @@ public class AddressBook {
     public void clear() {
         allPersons.clear();
         allTags.clear();
+        allAffiliations.clear();
     }
 
     /**
@@ -137,6 +163,7 @@ public class AddressBook {
         return other == this // short circuit if same object
                 || (other instanceof AddressBook // instanceof handles nulls
                         && this.allPersons.equals(((AddressBook) other).allPersons)
-                        && this.allTags.equals(((AddressBook) other).allTags));
+                        && this.allTags.equals(((AddressBook) other).allTags))
+                        && this.allAffiliations.equals(((AddressBook) other).allAffiliations);
     }
 }
